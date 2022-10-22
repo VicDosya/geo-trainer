@@ -1,0 +1,42 @@
+html {
+    display: flex;
+    justify-content: center;
+    
+}
+.homeTitle {
+    display: flex;
+    justify-content: center;
+    font-family: 'Arvo', serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.homeDescription {
+    display: flex;
+    justify-content: center;
+    font-family: 'Arvo', serif;
+    font-size: 20px;
+}
+
+.trainersTitle {
+    display: flex;
+    justify-content: center;
+    font-family: 'Arvo', serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+}
+
+.countryFlags, .countryCapitals, .countryShapes, .continentShapes {
+    width: 50%;
+    height: 50px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: normal;
+    font-family: 'Arvo', serif;
+}
