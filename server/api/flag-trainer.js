@@ -7,7 +7,18 @@ app.get('/', (req, res) => {
 });
 
 app.get('/quiz', (req, res) => {
-    res.send({ routeName: "Hello Quiz" });
+    res.send({
+        id: 1,
+        question: "What flag is this?",
+        flagImgUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg",
+        options: [
+          "United Kingdom",
+          "United States",
+          "Israel",
+          "Zimbabwe"
+        ],
+        answer: "Israel"
+      });
 });
 
 app.post('/guess', (req, res) => {
