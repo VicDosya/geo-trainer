@@ -7,9 +7,7 @@ export const Trainer = () => {
 
     //Redirecting to home page on button click
     let navigate = useNavigate();
-    const goBackRoute = () => {
-        navigate(-1);
-    };
+    const goBackRoute = () => navigate(-1);
 
     return (
         <div>

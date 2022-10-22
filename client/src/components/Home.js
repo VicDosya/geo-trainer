@@ -6,9 +6,7 @@ export const Home = () => {
 
     //Redirecting to trainer page on button click
     let navigate = useNavigate();
-    const goToTrainer = () => {
-        navigate('/trainer');
-    };
+    const goToTrainer = () => navigate('/trainer');
 
     return (
         <div className={styles.homeContainer}>
