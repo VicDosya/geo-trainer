@@ -21,10 +21,10 @@ export const Trainer = () => {
             </img>
 
             <div className={styles.choicesContainer}>
-                <button className={styles.answerOne}>Answer 1</button>
-                <button className={styles.answerTwo}>Answer 2</button>
-                <button className={styles.answerThree}>Answer 3</button>
-                <button className={styles.answerFour}>Answer 4</button>
+                <button className={styles.answer}>Answer 1</button>
+                <button className={styles.answer}>Answer 2</button>
+                <button className={styles.answer}>Answer 3</button>
+                <button className={styles.answer}>Answer 4</button>
             </div>
         </div>
     )
