@@ -1,0 +1,46 @@
+.trainerTitle {
+    display: flex;
+    justify-content: center;
+    font-family: 'Arvo', serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+.topContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.backButton {
+    font-size: 50px;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    color:#0066cc;
+}
+
+.backButton:hover {
+    cursor: pointer;
+    color: #0554a2;
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    width: 700px;
+}
+
+.choicesContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    margin-top: 25px;
+}
+
+.answerOne, .answerTwo, .answerThree, .answerFour {
+    height: 50px;
+    width: 70%;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: normal;
+    font-family: 'Arvo', serif;
+}

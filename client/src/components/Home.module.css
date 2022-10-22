@@ -29,8 +29,7 @@ html {
 .buttonContainer {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    
+    flex-direction: column; 
 }
 
 .countryFlags, .countryCapitals, .countryShapes, .continentShapes {

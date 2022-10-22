@@ -6,7 +6,7 @@ export const Home = () => {
 
     //Redirecting to trainer page on button click
     let navigate = useNavigate();
-    const routeChange = () => {
+    const goToTrainer = () => {
         let path = `Trainer`;
         navigate(path);
     };
@@ -21,10 +21,10 @@ export const Home = () => {
             </p>
             <h2 className={styles.trainersTitle}>Trainers:</h2>
             <div className={styles.buttonContainer}>
-                <button onClick={routeChange} className={styles.countryFlags}>Country Flags</button>
-                <button className={styles.countryCapitals}>Country Capitals</button>
-                <button className={styles.countryShapes}>Country Shapes</button>
-                <button className={styles.continentShapes}>Continent Shapes</button>
+                <button onClick={goToTrainer} className={styles.countryFlags}>Country Flags</button>
+                <button onClick={goToTrainer} className={styles.countryCapitals}>Country Capitals</button>
+                <button onClick={goToTrainer} className={styles.countryShapes}>Country Shapes</button>
+                <button onClick={goToTrainer} className={styles.continentShapes}>Continent Shapes</button>
             </div>
         </div>
     )
