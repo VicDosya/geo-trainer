@@ -5,6 +5,7 @@
     font-weight: bold;
     font-size: 40px;
 }
+
 .topContainer {
     display: flex;
     justify-content: space-between;
@@ -15,7 +16,7 @@
     font-weight: bold;
     background-color: transparent;
     border: none;
-    color:#0066cc;
+    color: #0066cc;
 }
 
 .backButton:hover {
@@ -32,11 +33,14 @@
 .choicesContainer {
     display: flex;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     margin-top: 25px;
 }
 
-.answerOne, .answerTwo, .answerThree, .answerFour {
+.answerOne,
+.answerTwo,
+.answerThree,
+.answerFour {
     height: 50px;
     width: 70%;
     margin-top: 10px;

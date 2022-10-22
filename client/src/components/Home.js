@@ -7,8 +7,7 @@ export const Home = () => {
     //Redirecting to trainer page on button click
     let navigate = useNavigate();
     const goToTrainer = () => {
-        let path = `Trainer`;
-        navigate(path);
+        navigate('/trainer');
     };
 
     return (
@@ -28,4 +27,4 @@ export const Home = () => {
             </div>
         </div>
     )
-}
+};

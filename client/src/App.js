@@ -6,8 +6,8 @@ import { Trainer } from './components/Trainer';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={ <Home /> }></Route>
-      <Route path='trainer' element={ <Trainer /> }></Route>
+      <Route path='/' element={<Home />}></Route>
+      <Route path='/trainer' element={<Trainer />}></Route>
     </Routes>
   );
 }
