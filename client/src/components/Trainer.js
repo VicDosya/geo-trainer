@@ -9,7 +9,6 @@ export const Trainer = () => {
     const [question, setQuestion] = useState('');
     const [questionImage, setQuestionImage] = useState('');
     const [questionOptions, setQuestionOptions] = useState([]);
-    const [questionId, setQuestionId] = useState([]);
 
     //Fire loadQuiz function when the page loads. The page rendered twice(I removed StrictMode from index.js).
     useEffect(() => {
@@ -21,13 +20,8 @@ export const Trainer = () => {
         const res = await axios.get('/api/quiz');
         setQuestion(res.data.question);
         setQuestionImage(res.data.flagImgUrl);
-        setQuestionOptions(currentOptions => [...currentOptions, res.data.options]);
-        console.log(res.data);
-        //Insert button depending on amount of options for the question
-
-
+        setQuestionOptions(res.data.options);
     };
-    console.log(questionOptions[0]);
 
     //Redirecting to home page on button click
     let navigate = useNavigate();
@@ -48,10 +42,7 @@ export const Trainer = () => {
                 <h1 className={styles.questionTitle}>{question}</h1>
             </div>
             <div className={styles.choicesContainer}>
-                <button className={styles.answer}>Answer 1</button>
-                <button className={styles.answer}>Answer 2</button>
-                <button className={styles.answer}>Answer 3</button>
-                <button className={styles.answer}>Answer 4</button>
+                {questionOptions.map((option, index) => <button key={index} className={styles.answer}>{option}</button>)}
             </div>
         </div>
     )
