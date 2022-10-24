@@ -6,9 +6,7 @@ import styles from './Trainer.module.css';
 export const Trainer = () => {
 
     //useState variables
-    const [question, setQuestion] = useState('');
-    const [questionImage, setQuestionImage] = useState('');
-    const [questionOptions, setQuestionOptions] = useState([]);
+    const [question, setQuestion] = useState([]);
 
     //Fire loadQuiz function when the page loads. The page rendered twice(I removed StrictMode from index.js).
     useEffect(() => {
@@ -18,9 +16,7 @@ export const Trainer = () => {
     //Load quiz(question) function
     const loadQuiz = async () => {
         const res = await axios.get('/api/quiz');
-        setQuestion(res.data.question);
-        setQuestionImage(res.data.flagImgUrl);
-        setQuestionOptions(res.data.options);
+        setQuestion(res.data);
     };
 
     //Redirecting to home page on button click
@@ -35,14 +31,15 @@ export const Trainer = () => {
                 <h1 className={styles.trainerTitle}>Trainer Page</h1>
             </div>
             <img className={styles.imgContainer}
-                src={questionImage}
+                src={question.flagImgUrl}
                 alt="Question image">
             </img>
             <div className={styles.questionContainer}>
-                <h1 className={styles.questionTitle}>{question}</h1>
+                <h1 className={styles.questionTitle}>{question.question}</h1>
             </div>
             <div className={styles.choicesContainer}>
-                {questionOptions.map((option, index) => <button key={index} className={styles.answer}>{option}</button>)}
+                {question.options?.map((option, index) => <button key={index} className={styles.answer}>{option}</button>)}
+                {/* Optional Chaining (the question mark) used here, because JS thought the question.options array was undefined. */}
             </div>
         </div>
     )
