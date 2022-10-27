@@ -27,7 +27,15 @@
 .imgContainer {
     display: flex;
     justify-content: center;
-    width: 550px;
+}
+
+.flagImg {
+    width: 300px;
+}
+
+.statusMessageContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .questionContainer {
