@@ -25,10 +25,6 @@ let randomFlagNumber = (retryCount = 0) => {
 };
 
 //Routes:
-app.get('/', (req, res) => {
-  res.send({ routeName: "Hello World" });
-});
-
 //Sending flag information from countries-data-all package to the client
 app.get('/quiz', (req, res) => {
 
@@ -52,7 +48,7 @@ app.get('/quiz', (req, res) => {
 //Client's guess handling.
 app.post('/guess', (req, res) => {
   if (req.body.userGuess === countriesData[correctFlagNumber].country) {
-    res.send({ returnStatus: "Correct!", correctChoice: true });
+    res.send({ returnStatus: "Correct!", correctStatus: true });
     correctFlagNumber = Math.floor(Math.random() * 242) + 1;
   } else {
     res.send({ returnStatus: "Wrong" });

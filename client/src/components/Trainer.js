@@ -7,7 +7,8 @@ export const Trainer = () => {
 
     //useState variables
     const [question, setQuestion] = useState([]);
-    const [statusMessage, setStatusMessage] = useState([]);
+    const [statusMessage, setStatusMessage] = useState('');
+    const [score, setScore] = useState(0);
 
     //Fire loadQuiz function when the page loads. The page rendered twice(I removed StrictMode from index.js).
     useEffect(() => {
@@ -26,10 +27,11 @@ export const Trainer = () => {
     //Handle User's guess choice
     const guessHandling = async (userGuess) => {
         const res = await axios.post('/api/guess', { userGuess });
-        if (res.data.correctChoice != true) {
+        if (res.data.correctStatus != true) {
             setStatusMessage(res.data.returnStatus);
         } else {
             setStatusMessage(res.data.returnStatus);
+            setScore(score + 1);
             loadQuiz();
         }
     };
@@ -55,7 +57,7 @@ export const Trainer = () => {
                 <h1 className={styles.statusMessage}>{statusMessage}</h1>
             </div>
             <div className={styles.questionContainer}>
-                <h1 className={styles.questionTitle}>{question.question}</h1>
+                <h1 className={styles.questionTitle}>{question.question} Score: {score}</h1>
             </div>
             <div className={styles.choicesContainer}>
                 {question.options?.map((option, index) =>
