@@ -1,0 +1,31 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="#FCFCFC"/>
+<circle cx="20" cy="20" r="20" fill="#3A99FF"/>
+<mask id="mask0_6041_13444" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40">
+<circle cx="20" cy="20" r="20" fill="#3A99FF"/>
+</mask>
+<g mask="url(#mask0_6041_13444)">
+<path d="M34.8695 8C34.6902 8.86211 34.6087 9.78031 34.6087 10.6956C34.6087 15.9717 37.7539 20.5382 42.2613 22.5939C42.0277 23.6985 41.4517 25.3913 41.4517 25.3913C41.2314 25.9848 40.9845 26.5652 40.7111 27.1305C40.1958 28.4348 39.1967 29.7391 39.1967 29.7391H14V27.1305H40.7111C40.9845 26.5652 41.2314 25.9848 41.4517 25.3913H14L34.8695 8Z" fill="#FFDA2C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 27H12V40H0V27Z" fill="#AF010D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 13H12V27H0V13Z" fill="white"/>
+<mask id="mask1_6041_13444" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-7" y="0" width="19" height="13">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M-7 0H12V13H-7V0Z" fill="#B01923"/>
+</mask>
+<g mask="url(#mask1_6041_13444)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M-7 0H12V13H-7V0Z" fill="#B01923"/>
+<rect width="1.74947" height="22.7431" transform="matrix(0.835417 -0.549617 0.835417 0.549617 -7.73047 0.731445)" fill="#0A6A30"/>
+<rect width="1.74947" height="22.7431" transform="matrix(-0.835417 -0.549617 0.835417 -0.549617 -6.26953 13.2314)" fill="#0A6A30"/>
+<rect x="1" y="-2" width="3" height="18" fill="white"/>
+<rect x="-11" y="8" width="3" height="27" transform="rotate(-90 -11 8)" fill="white"/>
+</g>
+<path d="M10 18.5L9 15L8 18.5H10Z" fill="#0D0A2C"/>
+<path d="M10 23.5L9 20L8 23.5H10Z" fill="#0D0A2C"/>
+<path d="M6.5 18.5L5.5 15L4.5 18.5H6.5Z" fill="#0D0A2C"/>
+<path d="M6.5 23.5L5.5 20L4.5 23.5H6.5Z" fill="#0D0A2C"/>
+<path d="M3 18.5L2 15L1 18.5H3Z" fill="#0D0A2C"/>
+<path d="M3 23.5L2 20L1 23.5H3Z" fill="#0D0A2C"/>
+<rect x="2" y="31" width="8" height="2" fill="#FFDA2C"/>
+<rect x="2" y="35" width="8" height="2" fill="#FFDA2C"/>
+</g>
+<circle cx="20" cy="20" r="19.5" stroke="#CCCCCC"/>
+</svg>

@@ -1,0 +1,21 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6041_13562)">
+<path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" fill="#F93939"/>
+<path d="M50.6667 0H5.33333C2.38781 0 0 2.38781 0 5.33333V34.6667C0 37.6122 2.38781 40 5.33333 40H50.6667C53.6122 40 56 37.6122 56 34.6667V5.33333C56 2.38781 53.6122 0 50.6667 0Z" fill="#F93939"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 10.6667H56V29.3334H0V10.6667Z" fill="#FFDA2C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23.9993 16.5919V23.3119C23.9993 25.1786 22.2073 26.6719 19.9993 26.6719H14.666C12.4633 26.6666 10.666 25.1653 10.666 23.3066V16.5866C10.666 15.0613 11.8607 13.7866 13.5033 13.3733C13.9993 11.9866 15.5247 13.2293 17.3327 13.2293C19.1513 13.2293 20.666 11.9946 21.162 13.3759C22.7993 13.7999 23.9993 15.0773 23.9993 16.5919Z" fill="#D4AF2C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M24 18.6667H26.6667V26.6667H24V18.6667ZM8 18.6667H10.6667V26.6667H8V18.6667Z" fill="#CBCBCB"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M24 24H26.6667V26.6667H24V24ZM8 24H10.6667V26.6667H8V24Z" fill="#1A47B8"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M24 16H26.6667V18.6667H24V16ZM8 16H10.6667V18.6667H8V16Z" fill="#D4AF2C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13.334 16H16.0007V20H13.334V16ZM18.6673 21.3333H21.334V25.3333H18.6673V21.3333Z" fill="#AF010D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M18.666 16H21.3327V20H18.666V16Z" fill="#AE6A3E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13.334 21.3333H16.0007V25.3333H13.334V21.3333Z" fill="#FFDA2C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.0007 15.9999L13.334 13.3333H21.334L18.6673 15.9999H16.0007Z" fill="#AF010D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 10.6667H18.6667V13.3334H16V10.6667Z" fill="#D4AF2C"/>
+</g>
+<defs>
+<clipPath id="clip0_6041_13562">
+<path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" fill="white"/>
+</clipPath>
+</defs>
+</svg>
