@@ -17,9 +17,10 @@ let randomFlagNumber = (retryCount = 0) => {
 
   //Generate a randomFlag again if duplicates are detected, stop a recursive function with retryCount.
   if (randomFlag === correctFlagNumber && retryCount < MAX_RANDOM_FLAG_RETRY_COUNT) {
-    randomFlagNumber(retryCount++);
+    return randomFlagNumber(retryCount++);
   } else if (retryCount >= MAX_RANDOM_FLAG_RETRY_COUNT) {
-    return console.log(`Retry count has reached the limit of ${MAX_RANDOM_FLAG_RETRY_COUNT}`);
+    console.log(`Retry count has reached the limit of ${MAX_RANDOM_FLAG_RETRY_COUNT}`);
+    return 0;
   } else {
     return randomFlag;
   }
