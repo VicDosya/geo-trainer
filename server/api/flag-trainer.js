@@ -6,8 +6,10 @@ const app = express();
 const MAX_RANDOM_FLAG_RETRY_COUNT = 5;
 
 //Functions
-//Randomizer index variable for the CORRECT flag!
-let correctFlagNumber = Math.floor(Math.random() * 242) + 1;
+//Randomizer index function for the CORRECT flag!
+let correctFlagNumber;
+const generateCorrectFlag = () => correctFlagNumber = Math.floor(Math.random() * 242) + 1;
+generateCorrectFlag();
 
 //Randomizer index for RANDOM(incorrect) flag
 let randomFlagNumber = (retryCount = 0) => {
@@ -15,8 +17,7 @@ let randomFlagNumber = (retryCount = 0) => {
 
   //Generate a randomFlag again if duplicates are detected, stop a recursive function with retryCount.
   if (randomFlag === correctFlagNumber && retryCount < MAX_RANDOM_FLAG_RETRY_COUNT) {
-    randomFlagNumber();
-    retryCount++
+    randomFlagNumber(retryCount++);
   } else if (retryCount >= MAX_RANDOM_FLAG_RETRY_COUNT) {
     return console.log(`Retry count has reached the limit of ${MAX_RANDOM_FLAG_RETRY_COUNT}`);
   } else {
@@ -49,7 +50,7 @@ app.get('/quiz', (req, res) => {
 app.post('/guess', (req, res) => {
   if (req.body.userGuess === countriesData[correctFlagNumber].country) {
     res.send({ returnStatus: "Correct!", correctStatus: true });
-    correctFlagNumber = Math.floor(Math.random() * 242) + 1;
+    generateCorrectFlag();
   } else {
     res.send({ returnStatus: "Wrong" });
   }

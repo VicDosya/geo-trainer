@@ -27,7 +27,7 @@ export const Trainer = () => {
     //Handle User's guess choice
     const guessHandling = async (userGuess) => {
         const res = await axios.post('/api/guess', { userGuess });
-        if (res.data.correctStatus != true) {
+        if (!res.data.correctStatus) {
             setStatusMessage(res.data.returnStatus);
         } else {
             setStatusMessage(res.data.returnStatus);
