@@ -1,5 +1,5 @@
 const express = require('express');
-const { countriesData } = require('countries-data-all');
+const countryData = require('./countrydata/countries.json');
 const app = express();
 
 //Constant Variables
@@ -8,7 +8,7 @@ const MAX_RANDOM_FLAG_RETRY_COUNT = 5;
 //Functions
 //Randomizer index function for the CORRECT flag!
 let correctFlagNumber;
-const generateCorrectFlag = () => correctFlagNumber = Math.floor(Math.random() * 242) + 1;
+const generateCorrectFlag = () => correctFlagNumber = Math.floor(Math.random() * 245) + 1;
 generateCorrectFlag();
 
 //Randomizer index for RANDOM(incorrect) flag
@@ -34,22 +34,22 @@ app.get('/quiz', (req, res) => {
   res.send({
     id: 1,
     question: "What flag is this?",
-    flagImgUrl: countriesData[correctFlagNumber].flag,
+    flagImgUrl: countryData[correctFlagNumber].flag,
 
     options: [
-      countriesData[randomFlagNumber()].country,
-      countriesData[randomFlagNumber()].country,
-      countriesData[correctFlagNumber].country,
-      countriesData[randomFlagNumber()].country
+      countryData[randomFlagNumber()].name,
+      countryData[randomFlagNumber()].name,
+      countryData[correctFlagNumber].name,
+      countryData[randomFlagNumber()].name
     ].sort((a, b) => 0.5 - Math.random()),   //Randomise the positioning of the choices
 
-    answer: countriesData[correctFlagNumber].country
+    answer: countryData[correctFlagNumber].name
   });
 });
 
 //Client's guess handling.
 app.post('/guess', (req, res) => {
-  if (req.body.userGuess === countriesData[correctFlagNumber].country) {
+  if (req.body.userGuess === countryData[correctFlagNumber].name) {
     res.send({ returnStatus: "Correct!", correctStatus: true });
     generateCorrectFlag();
   } else {

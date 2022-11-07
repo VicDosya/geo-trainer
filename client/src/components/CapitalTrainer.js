@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styles from './Trainer.module.css';
 
-export const Trainer = () => {
+export const CapitalTrainer = () => {
 
     //useState variables
     const [question, setQuestion] = useState([]);
@@ -17,7 +17,7 @@ export const Trainer = () => {
 
     //Load quiz(question) function
     const loadQuiz = async () => {
-        const res = await axios.get('/api/quiz');
+        const res = await axios.get('/api/capitalquiz');
         setQuestion(res.data);
         setTimeout(() => {
             setStatusMessage('');
@@ -26,7 +26,7 @@ export const Trainer = () => {
 
     //Handle User's guess choice
     const guessHandling = async (userGuess) => {
-        const res = await axios.post('/api/guess', { userGuess });
+        const res = await axios.post('/api/guesscapital', { userGuess });
         if (!res.data.correctStatus) {
             setStatusMessage(res.data.returnStatus);
         } else {
@@ -45,13 +45,10 @@ export const Trainer = () => {
         <div>
             <div className={styles.topContainer}>
                 <button onClick={goBackRoute} className={styles.backButton}>⬅</button>
-                <h1 className={styles.trainerTitle}>Flag Trainer Page</h1>
+                <h1 className={styles.trainerTitle}>Capital Trainer Page</h1>
             </div>
-            <div className={styles.imgContainer}>
-                <img className={styles.flagImg}
-                    src={question.flagImgUrl}
-                    alt="Question image">
-                </img>
+            <div className={styles.questionContainer}>
+                <h1>{question.countryName}</h1>
             </div>
             <div className={styles.statusMessageContainer}>
                 <h1 className={styles.statusMessage}>{statusMessage}</h1>
