@@ -28,7 +28,7 @@ let randomCapitalNumber = (retryCount = 0) => {
 
 //Routes:
 //Sending capital information from countries-data-all package to the client
-app.get('/capitalquiz', (req, res) => {
+app.get('/quiz', (req, res) => {
 
   //Send back capital information to the client.
   res.send({
@@ -48,7 +48,7 @@ app.get('/capitalquiz', (req, res) => {
 });
 
 //Client's guess handling.
-app.post('/guesscapital', (req, res) => {
+app.post('/guess', (req, res) => {
   if (req.body.userGuess === countryData[correctCapitalNumber].capital) {
     res.send({ returnStatus: "Correct!", correctStatus: true });
     generateCorrectCapital();

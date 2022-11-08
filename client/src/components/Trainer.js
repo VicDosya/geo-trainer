@@ -17,7 +17,7 @@ export const Trainer = () => {
 
     //Load quiz(question) function
     const loadQuiz = async () => {
-        const res = await axios.get('/api/quiz');
+        const res = await axios.get('/api/flags/quiz');
         setQuestion(res.data);
         setTimeout(() => {
             setStatusMessage('');
@@ -26,7 +26,7 @@ export const Trainer = () => {
 
     //Handle User's guess choice
     const guessHandling = async (userGuess) => {
-        const res = await axios.post('/api/guess', { userGuess });
+        const res = await axios.post('/api/flags/guess', { userGuess });
         if (!res.data.correctStatus) {
             setStatusMessage(res.data.returnStatus);
         } else {

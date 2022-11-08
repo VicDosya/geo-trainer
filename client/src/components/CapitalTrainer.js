@@ -17,7 +17,7 @@ export const CapitalTrainer = () => {
 
     //Load quiz(question) function
     const loadQuiz = async () => {
-        const res = await axios.get('/api/capitalquiz');
+        const res = await axios.get('/api/capitals/quiz');
         setQuestion(res.data);
         setTimeout(() => {
             setStatusMessage('');
@@ -26,7 +26,7 @@ export const CapitalTrainer = () => {
 
     //Handle User's guess choice
     const guessHandling = async (userGuess) => {
-        const res = await axios.post('/api/guesscapital', { userGuess });
+        const res = await axios.post('/api/capitals/guess', { userGuess });
         if (!res.data.correctStatus) {
             setStatusMessage(res.data.returnStatus);
         } else {

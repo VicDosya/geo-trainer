@@ -8,8 +8,8 @@ const app = express();
 //Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/api', apiFlagRoutes);
-app.use('/api', apiCapitalRoutes);
+app.use('/api/flags', apiFlagRoutes);
+app.use('/api/capitals', apiCapitalRoutes);
 
 //Server Start
 app.listen(PORT, () => {
