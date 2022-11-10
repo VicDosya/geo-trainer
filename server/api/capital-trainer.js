@@ -1,5 +1,5 @@
-const express = require('express');
-const countryData = require('./countrydata/countries.json');
+import express from 'express';
+import countryData from './countrydata/countries.json';
 const app = express();
 
 //Constant Variables

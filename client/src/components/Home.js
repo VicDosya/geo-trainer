@@ -8,6 +8,7 @@ export const Home = () => {
     let navigate = useNavigate();
     const goToTrainer = () => navigate('/trainer');
     const goToCapitalTrainer = () => navigate('/capitaltrainer');
+    const goToShapeTrainer = () => navigate('/shapetrainer');
 
     return (
         <div className={styles.homeContainer}>
@@ -21,7 +22,7 @@ export const Home = () => {
             <div className={styles.buttonContainer}>
                 <button onClick={goToTrainer} className={styles.countryFlags}>Country Flags</button>
                 <button onClick={goToCapitalTrainer} className={styles.countryCapitals}>Country Capitals</button>
-                <button onClick={goToTrainer} className={styles.countryShapes}>Country Shapes</button>
+                <button onClick={goToShapeTrainer} className={styles.countryShapes}>Country Shapes</button>
                 <button onClick={goToTrainer} className={styles.continentShapes}>Continent Shapes</button>
             </div>
         </div>
