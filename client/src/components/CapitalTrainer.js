@@ -1,66 +1,82 @@
-import { React, useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import styles from './Trainer.module.css';
+import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import styles from "./Trainer.module.css";
 
 export const CapitalTrainer = () => {
+  //useState variables
+  const [question, setQuestion] = useState([]);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [score, setScore] = useState(0);
+  const [choiceButton, setChoiceButton] = useState(false);
 
-    //useState variables
-    const [question, setQuestion] = useState([]);
-    const [statusMessage, setStatusMessage] = useState('');
-    const [score, setScore] = useState(0);
+  //Fire loadQuiz function when the page loads. The page rendered twice(I removed StrictMode from index.js).
+  useEffect(() => {
+    loadQuiz();
+  }, []);
 
-    //Fire loadQuiz function when the page loads. The page rendered twice(I removed StrictMode from index.js).
-    useEffect(() => {
-        loadQuiz();
-    }, []);
+  //Load quiz(question) function
+  const loadQuiz = async () => {
+    const res = await axios.get("/api/capitals/quiz");
+    setQuestion(res.data);
+    setTimeout(() => {
+      setStatusMessage("");
+    }, 2000);
+    setChoiceButton(false);
+  };
 
-    //Load quiz(question) function
-    const loadQuiz = async () => {
-        const res = await axios.get('/api/capitals/quiz');
-        setQuestion(res.data);
-        setTimeout(() => {
-            setStatusMessage('');
-        }, 2000);
-    };
+  //Handle User's guess choice
+  const guessHandling = async (userGuess) => {
+    setChoiceButton(true);
+    const res = await axios.post("/api/capitals/guess", { userGuess });
+    if (!res.data.correctStatus) {
+      setStatusMessage(res.data.returnStatus);
+      setChoiceButton(false);
+    } else {
+      setStatusMessage(res.data.returnStatus);
+      setScore(score + 1);
+      loadQuiz();
+      setChoiceButton(true);
+    }
+  };
 
-    //Handle User's guess choice
-    const guessHandling = async (userGuess) => {
-        const res = await axios.post('/api/capitals/guess', { userGuess });
-        if (!res.data.correctStatus) {
-            setStatusMessage(res.data.returnStatus);
-        } else {
-            setStatusMessage(res.data.returnStatus);
-            setScore(score + 1);
-            loadQuiz();
-        }
-    };
+  //Redirecting to home page on button click
+  let navigate = useNavigate();
+  const goBackRoute = () => navigate(-1);
 
-    //Redirecting to home page on button click
-    let navigate = useNavigate();
-    const goBackRoute = () => navigate(-1);
-
-    //JSX
-    return (
-        <div>
-            <div className={styles.topContainer}>
-                <button onClick={goBackRoute} className={styles.backButton}>⬅</button>
-                <h1 className={styles.trainerTitle}>Capital Trainer Page</h1>
-            </div>
-            <div className={styles.questionContainer}>
-                <h1>{question.countryName}</h1>
-            </div>
-            <div className={styles.statusMessageContainer}>
-                <h1 className={styles.statusMessage}>{statusMessage}</h1>
-            </div>
-            <div className={styles.questionContainer}>
-                <h1 className={styles.questionTitle}>{question.question} Score: {score}</h1>
-            </div>
-            <div className={styles.choicesContainer}>
-                {question.options?.map((option, index) =>
-                    <button key={index} className={styles.answer} onClick={() => guessHandling(option)}>{option}</button>)}
-                {/* Optional Chaining (the question mark) used here, because JS thought the question.options array was undefined. */}
-            </div>
-        </div>
-    )
+  //JSX
+  return (
+    <div>
+      <div className={styles.topContainer}>
+        <button onClick={goBackRoute} className={styles.backButton}>
+          ⬅
+        </button>
+        <h1 className={styles.trainerTitle}>Capital Trainer Page</h1>
+      </div>
+      <div className={styles.questionContainer}>
+        <h1>{question.countryName}</h1>
+      </div>
+      <div className={styles.statusMessageContainer}>
+        <h1 className={styles.statusMessage}>{statusMessage}</h1>
+      </div>
+      <div className={styles.questionContainer}>
+        <h1 className={styles.questionTitle}>
+          {question.question} Score: {score}
+        </h1>
+      </div>
+      <div className={styles.choicesContainer}>
+        {question.options?.map((option, index) => (
+          <button
+            disabled={choiceButton}
+            key={index}
+            className={styles.answer}
+            onClick={() => guessHandling(option)}
+          >
+            {option}
+          </button>
+        ))}
+        {/* Optional Chaining (the question mark) used here, because JS thought the question.options array was undefined. */}
+      </div>
+    </div>
+  );
 };

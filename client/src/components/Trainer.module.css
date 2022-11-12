@@ -66,12 +66,10 @@
 .myGroup {
   transform-box: fill-box;
   transform-origin: 0 0;
+  width: 100%;
 }
 
 .mySvg {
-  height: 100px;
-}
-
-.myPath {
-  height: 100px;
+  height: 200px;
+  width: 100%;
 }

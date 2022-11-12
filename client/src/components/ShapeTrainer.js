@@ -8,13 +8,14 @@ export const ShapeTrainer = () => {
   const [question, setQuestion] = useState([]);
   const [statusMessage, setStatusMessage] = useState("");
   const [score, setScore] = useState(0);
+  const [choiceButton, setChoiceButton] = useState(false);
+  const [svgScale, setSvgScale] = useState(1);
   const [pathDim, setPathDim] = useState({
     x: 0,
     y: 0,
     width: 250,
     height: 250,
   });
-  const [svgScale, setSvgScale] = useState(1);
 
   //useRef variables
   const pathDimRef = useRef();
@@ -25,14 +26,18 @@ export const ShapeTrainer = () => {
     loadQuiz();
   }, []);
 
-  //Resize svg 
-  const bBox = pathDimRef.current?.getBBox();
+  //Get svg dimensions and apply them to the pathDim state variable.
   useEffect(() => {
-    const pd = pathDimRef.current.getBBox();
-    setPathDim(pd);
-    const ssh = svgDimRef.current?.clientHeight;
-    setSvgScale(1 / (pd.height / ssh));
-  }, [pathDimRef.current?.getBBox().x, pathDimRef.current?.getBBox().y, pathDimRef.current?.getBBox().width, pathDimRef.current?.getBBox().height]);
+    const pathBbox = pathDimRef.current?.getBBox();
+    if (
+      pathDim.x === pathBbox.x &&
+      pathDim.y === pathBbox.y &&
+      pathDim.width === pathBbox.width &&
+      pathDim.height === pathBbox.height
+    )
+      return;
+    setPathDim(pathBbox);
+  });
 
   //Load quiz(question) function
   const loadQuiz = async () => {
@@ -41,17 +46,21 @@ export const ShapeTrainer = () => {
     setTimeout(() => {
       setStatusMessage("");
     }, 2000);
+    setChoiceButton(false);
   };
 
   //Handle User's guess choice
   const guessHandling = async (userGuess) => {
+    setChoiceButton(true);
     const res = await axios.post("/api/shapes/guess", { userGuess });
     if (!res.data.correctStatus) {
       setStatusMessage(res.data.returnStatus);
+      setChoiceButton(false);
     } else {
       setStatusMessage(res.data.returnStatus);
       setScore(score + 1);
       loadQuiz();
+      setChoiceButton(true);
     }
   };
 
@@ -74,15 +83,17 @@ export const ShapeTrainer = () => {
           ref={svgDimRef}
           className={styles.mySvg}
           xmlns="http://www.w3.org/2000/svg"
-          viewBox={`${pathDim.x} ${pathDim.y} ${pathDim.x + pathDim.width} ${pathDim.y + pathDim.height}`}
+          viewBox={`${pathDim.x} ${pathDim.y} ${pathDim.width} ${pathDim.height}`}
         >
-          <g className={styles.myGroup} style={{ transform:`scale(${svgScale})`}}>
+          <g
+            className={styles.myGroup}
+            style={{ transform: `scale(${svgScale})` }}
+          >
             <path
               ref={pathDimRef}
               className={styles.myPath}
               d={question.pathShape}
               fill="red"
-              stroke="black"
             ></path>
           </g>
         </svg>
@@ -98,6 +109,7 @@ export const ShapeTrainer = () => {
       <div className={styles.choicesContainer}>
         {question.options?.map((option, index) => (
           <button
+            disabled={choiceButton}
             key={index}
             className={styles.answer}
             onClick={() => guessHandling(option)}
