@@ -1,64 +1,75 @@
 .trainerTitle {
-    display: flex;
-    justify-content: center;
-    font-family: 'Arvo', serif;
-    font-weight: bold;
-    font-size: 40px;
+  display: flex;
+  justify-content: center;
+  font-family: "Arvo", serif;
+  font-weight: bold;
+  font-size: 40px;
 }
 
 .topContainer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .backButton {
-    font-size: 50px;
-    font-weight: bold;
-    background-color: transparent;
-    border: none;
-    color: #0066cc;
+  font-size: 50px;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  color: #0066cc;
 }
 
 .backButton:hover {
-    cursor: pointer;
-    color: #0554a2;
+  cursor: pointer;
+  color: #0554a2;
 }
 
 .imgContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .flagImg {
-    width: 300px;
+  width: 300px;
 }
 
 .statusMessageContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .questionContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .questionTitle {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .choicesContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 25px;
 }
 
 .answer {
-    height: 50px;
-    width: 70%;
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: normal;
-    font-family: 'Arvo', serif;
+  height: 50px;
+  width: 70%;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: normal;
+  font-family: "Arvo", serif;
+}
+
+.myGroup {
+  transform-box: fill-box;
+  transform-origin: 0 0;
+  width: 100%;
+}
+
+.mySvg {
+  height: 200px;
+  width: 100%;
 }

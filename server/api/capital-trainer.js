@@ -1,5 +1,5 @@
-const express = require('express');
-const countryData = require('./countrydata/countries.json');
+import express from "express";
+import countryData from "./countrydata/countries.json";
 const app = express();
 
 //Constant Variables
@@ -8,18 +8,24 @@ const MAX_RANDOM_CAPITAL_RETRY_COUNT = 5;
 //Functions
 //Randomizer index function for the CORRECT capital!
 let correctCapitalNumber;
-const generateCorrectCapital = () => correctCapitalNumber = Math.floor(Math.random() * 245) + 1;
+const generateCorrectCapital = () =>
+  (correctCapitalNumber = Math.floor(Math.random() * countryData.length));
 generateCorrectCapital();
 
 //Randomizer index for RANDOM(incorrect) capital
 let randomCapitalNumber = (retryCount = 0) => {
-  let randomCapital = Math.floor(Math.random() * 242) + 1;
+  let randomCapital = Math.floor(Math.random() * countryData.length);
 
   //Generate a randomCapital again if duplicates are detected, stop a recursive function with retryCount.
-  if (randomCapital === correctCapitalNumber && retryCount < MAX_RANDOM_CAPITAL_RETRY_COUNT) {
+  if (
+    randomCapital === correctCapitalNumber &&
+    retryCount < MAX_RANDOM_CAPITAL_RETRY_COUNT
+  ) {
     return randomCapitalNumber(retryCount++);
   } else if (retryCount >= MAX_RANDOM_CAPITAL_RETRY_COUNT) {
-    console.log(`Retry count has reached the limit of ${MAX_RANDOM_CAPITAL_RETRY_COUNT}`);
+    console.log(
+      `Retry count has reached the limit of ${MAX_RANDOM_CAPITAL_RETRY_COUNT}`
+    );
     return 0;
   } else {
     return randomCapital;
@@ -28,8 +34,7 @@ let randomCapitalNumber = (retryCount = 0) => {
 
 //Routes:
 //Sending capital information from countries-data-all package to the client
-app.get('/quiz', (req, res) => {
-
+app.get("/quiz", (req, res) => {
   //Send back capital information to the client.
   res.send({
     id: 1,
@@ -40,15 +45,15 @@ app.get('/quiz', (req, res) => {
       countryData[randomCapitalNumber()].capital,
       countryData[randomCapitalNumber()].capital,
       countryData[correctCapitalNumber].capital,
-      countryData[randomCapitalNumber()].capital
-    ].sort((a, b) => 0.5 - Math.random()),   //Randomise the positioning of the choices
+      countryData[randomCapitalNumber()].capital,
+    ].sort((a, b) => 0.5 - Math.random()), //Randomise the positioning of the choices
 
-    answer: countryData[correctCapitalNumber].capital
+    answer: countryData[correctCapitalNumber].capital,
   });
 });
 
 //Client's guess handling.
-app.post('/guess', (req, res) => {
+app.post("/guess", (req, res) => {
   if (req.body.userGuess === countryData[correctCapitalNumber].capital) {
     res.send({ returnStatus: "Correct!", correctStatus: true });
     generateCorrectCapital();

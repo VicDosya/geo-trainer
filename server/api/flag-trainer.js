@@ -1,5 +1,5 @@
-const express = require('express');
-const countryData = require('./countrydata/countries.json');
+import express from 'express';
+import countryData from './countrydata/countries.json';
 const app = express();
 
 //Constant Variables
@@ -8,12 +8,12 @@ const MAX_RANDOM_FLAG_RETRY_COUNT = 5;
 //Functions
 //Randomizer index function for the CORRECT flag!
 let correctFlagNumber;
-const generateCorrectFlag = () => correctFlagNumber = Math.floor(Math.random() * 245) + 1;
+const generateCorrectFlag = () => correctFlagNumber = Math.floor(Math.random() * countryData.length);
 generateCorrectFlag();
 
 //Randomizer index for RANDOM(incorrect) flag
 let randomFlagNumber = (retryCount = 0) => {
-  let randomFlag = Math.floor(Math.random() * 242) + 1;
+  let randomFlag = Math.floor(Math.random() * countryData.length);
 
   //Generate a randomFlag again if duplicates are detected, stop a recursive function with retryCount.
   if (randomFlag === correctFlagNumber && retryCount < MAX_RANDOM_FLAG_RETRY_COUNT) {
