@@ -3,11 +3,7 @@ import countryData from "./countrydata/countries.json";
 import { selectRandomOptions } from "./utils/Utils";
 const app = express();
 
-//Constant Variables
-const MAX_RANDOM_CAPITAL_RETRY_COUNT = 5;
-
 //Functions
-
 const generateQuiz = () => {
   const correctCapitalNumber = Math.floor(Math.random() * countryData.length);
   return {
@@ -17,26 +13,6 @@ const generateQuiz = () => {
     options: selectRandomOptions(countryData, correctCapitalNumber, "capital"),
     answer: countryData[correctCapitalNumber].capital,
   };
-};
-
-//Randomizer index for RANDOM(incorrect) capital
-let randomCapitalNumber = (correctCapitalNumber, retryCount = 0) => {
-  let randomCapital = Math.floor(Math.random() * countryData.length);
-
-  //Generate a randomCapital again if duplicates are detected, stop a recursive function with retryCount.
-  if (
-    randomCapital === correctCapitalNumber &&
-    retryCount < MAX_RANDOM_CAPITAL_RETRY_COUNT
-  ) {
-    return randomCapitalNumber(correctCapitalNumber, retryCount++);
-  } else if (retryCount >= MAX_RANDOM_CAPITAL_RETRY_COUNT) {
-    console.log(
-      `Retry count has reached the limit of ${MAX_RANDOM_CAPITAL_RETRY_COUNT}`
-    );
-    return 0;
-  } else {
-    return randomCapital;
-  }
 };
 
 //Routes:
