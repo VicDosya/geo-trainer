@@ -1,6 +1,7 @@
 import express from "express"; //USING ESM IN NODE WITH 'esm' PACKAGE. Launch server with nodemon -r esm express.js<---
 import countryData from "./countrydata/countries.json";
 import countryShapes from "world-map-country-shapes";
+import { selectRandomOptions } from "./utils/Utils";
 const app = express();
 
 //Constant Variables
@@ -23,7 +24,6 @@ const generateQuiz = () => {
     id: 1,
     question: "What is the country of this shape?",
     pathShape: countryShapes[correctShapeNumber].shape,
-
     options: [
       countryData[randomShapeNumber(correctShapeNumber)].name,
       countryData[randomShapeNumber(correctShapeNumber)].name,
@@ -58,19 +58,19 @@ let randomShapeNumber = (correctShapeNumber, retryCount = 0) => {
 //Routes:
 //Sending shape information from package to the client
 app.get("/quiz", (req, res) => {
-  if (!req.session.quiz) {
+  if (!req.session.shapeQuiz) {
     //When user refreshes, the quiz question remains as it was initially.
-    req.session.quiz = generateQuiz();
+    req.session.shapeQuiz = generateQuiz();
   }
 
   //Send back flag information to the client.
-  res.send(req.session.quiz);
+  res.send(req.session.shapeQuiz);
 });
 
 //Client's guess handling.
 app.post("/guess", (req, res) => {
-  if (req.body.userGuess === req.session.quiz.answer) {
-    req.session.quiz = generateQuiz();
+  if (req.body.userGuess === req.session.shapeQuiz.answer) {
+    req.session.shapeQuiz = generateQuiz();
     res.send({ returnStatus: "Correct!", correctStatus: true });
   } else {
     res.send({ returnStatus: "Wrong" });

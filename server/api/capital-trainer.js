@@ -1,5 +1,6 @@
 import express from "express";
 import countryData from "./countrydata/countries.json";
+import { selectRandomOptions } from "./utils/Utils";
 const app = express();
 
 //Constant Variables
@@ -13,14 +14,7 @@ const generateQuiz = () => {
     id: 1,
     question: "What is the capital of this country?",
     countryName: countryData[correctCapitalNumber].name,
-
-    options: [
-      countryData[randomCapitalNumber(correctCapitalNumber)].capital,
-      countryData[randomCapitalNumber(correctCapitalNumber)].capital,
-      countryData[correctCapitalNumber].capital,
-      countryData[randomCapitalNumber(correctCapitalNumber)].capital,
-    ].sort((a, b) => 0.5 - Math.random()), //Randomise the positioning of the choices
-
+    options: selectRandomOptions(countryData, correctCapitalNumber, "capital"),
     answer: countryData[correctCapitalNumber].capital,
   };
 };
@@ -48,19 +42,19 @@ let randomCapitalNumber = (correctCapitalNumber, retryCount = 0) => {
 //Routes:
 //Sending capital information from countries-data-all package to the client
 app.get("/quiz", (req, res) => {
-  if (!req.session.quiz) {
+  if (!req.session.capitalQuiz) {
     //When user refreshes, the quiz question remains as it was initially.
-    req.session.quiz = generateQuiz();
+    req.session.capitalQuiz = generateQuiz();
   }
 
   //Send back flag information to the client.
-  res.send(req.session.quiz);
+  res.send(req.session.capitalQuiz);
 });
 
 //Client's guess handling.
 app.post("/guess", (req, res) => {
-  if (req.body.userGuess === req.session.quiz.answer) {
-    req.session.quiz = generateQuiz();
+  if (req.body.userGuess === req.session.capitalQuiz.answer) {
+    req.session.capitalQuiz = generateQuiz();
     res.send({ returnStatus: "Correct!", correctStatus: true });
   } else {
     res.send({ returnStatus: "Wrong" });
