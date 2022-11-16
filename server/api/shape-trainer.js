@@ -8,25 +8,35 @@ const MAX_RANDOM_SHAPE_RETRY_COUNT = 5;
 
 //Functions
 //Randomizer index function for the CORRECT shape!
-let correctShapeNumber;
-let countryId;
-let selectedCountry;
-
-const generateCorrectShape = () => {
-  correctShapeNumber = Math.floor(Math.random() * countryShapes.length);
+const generateQuiz = () => {
+  const correctShapeNumber = Math.floor(Math.random() * countryShapes.length);
   let country = countryShapes[correctShapeNumber];
   if (!country) {
     throw new Error(
       `There is no country with such index ${correctShapeNumber}`
     );
   }
-  countryId = country.id;
-  selectedCountry = countryData.find((c) => c.alpha2Code === countryId); // Get country name if countrydata and shape id are the same.
+  const countryId = country.id;
+  const selectedCountry = countryData.find((c) => c.alpha2Code === countryId); // Get country name if countrydata and shape id are the same.
+
+  return {
+    id: 1,
+    question: "What is the country of this shape?",
+    pathShape: countryShapes[correctShapeNumber].shape,
+
+    options: [
+      countryData[randomShapeNumber(correctShapeNumber)].name,
+      countryData[randomShapeNumber(correctShapeNumber)].name,
+      selectedCountry.name,
+      countryData[randomShapeNumber(correctShapeNumber)].name,
+    ].sort((a, b) => 0.5 - Math.random()), //Randomise the positioning of the choices
+
+    answer: selectedCountry.name,
+  };
 };
-generateCorrectShape();
 
 //Randomizer index for RANDOM(incorrect) shape
-let randomShapeNumber = (retryCount = 0) => {
+let randomShapeNumber = (correctShapeNumber, retryCount = 0) => {
   let randomShape = Math.floor(Math.random() * countryShapes.length);
 
   //Generate a randomShape again if duplicates are detected, stop a recursive function with retryCount.
@@ -34,7 +44,7 @@ let randomShapeNumber = (retryCount = 0) => {
     randomShape === correctShapeNumber &&
     retryCount < MAX_RANDOM_SHAPE_RETRY_COUNT
   ) {
-    return randomShapeNumber(retryCount++);
+    return randomShapeNumber(correctShapeNumber, retryCount++);
   } else if (retryCount >= MAX_RANDOM_SHAPE_RETRY_COUNT) {
     console.log(
       `Retry count has reached the limit of ${MAX_RANDOM_SHAPE_RETRY_COUNT}`
@@ -48,28 +58,20 @@ let randomShapeNumber = (retryCount = 0) => {
 //Routes:
 //Sending shape information from package to the client
 app.get("/quiz", (req, res) => {
-  //Send back shape information to the client.
-  res.send({
-    id: 1,
-    question: "What is the country of this shape?",
-    pathShape: countryShapes[correctShapeNumber].shape,
+  if (!req.session.quiz) {
+    //When user refreshes, the quiz question remains as it was initially.
+    req.session.quiz = generateQuiz();
+  }
 
-    options: [
-      countryData[randomShapeNumber()].name,
-      countryData[randomShapeNumber()].name,
-      selectedCountry.name,
-      countryData[randomShapeNumber()].name,
-    ].sort((a, b) => 0.5 - Math.random()), //Randomise the positioning of the choices
-
-    answer: selectedCountry.name,
-  });
+  //Send back flag information to the client.
+  res.send(req.session.quiz);
 });
 
 //Client's guess handling.
 app.post("/guess", (req, res) => {
-  if (req.body.userGuess === selectedCountry.name) {
+  if (req.body.userGuess === req.session.quiz.answer) {
+    req.session.quiz = generateQuiz();
     res.send({ returnStatus: "Correct!", correctStatus: true });
-    generateCorrectShape();
   } else {
     res.send({ returnStatus: "Wrong" });
   }
