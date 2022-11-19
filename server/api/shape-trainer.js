@@ -1,7 +1,7 @@
 import express from "express"; //USING ESM IN NODE WITH 'esm' PACKAGE. Launch server with nodemon -r esm express.js<---
 import countryData from "./countrydata/countries.json";
 import countryShapes from "world-map-country-shapes";
-import { selectRandomOptions } from "./utils/Utils";
+
 const app = express();
 
 //Constant Variables
