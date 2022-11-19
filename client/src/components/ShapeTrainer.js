@@ -9,6 +9,7 @@ export const ShapeTrainer = () => {
   const [statusMessage, setStatusMessage] = useState("");
   const [score, setScore] = useState(0);
   const [choiceButton, setChoiceButton] = useState(false);
+  const [incorrectAnswers, setIncorrectAnswers] = useState([]);
   const [svgScale, setSvgScale] = useState(1);
   const [pathDim, setPathDim] = useState({
     x: 0,
@@ -50,17 +51,22 @@ export const ShapeTrainer = () => {
   };
 
   //Handle User's guess choice
-  const guessHandling = async (userGuess) => {
+  const guessHandling = async (userGuess, index) => {
     setChoiceButton(true);
     const res = await axios.post("/api/shapes/guess", { userGuess });
     if (!res.data.correctStatus) {
       setStatusMessage(res.data.returnStatus);
       setChoiceButton(false);
+      setIncorrectAnswers([
+        ...incorrectAnswers,
+        index
+      ]);
     } else {
       setStatusMessage(res.data.returnStatus);
       setScore(score + 1);
       loadQuiz();
       setChoiceButton(true);
+      setIncorrectAnswers([]);
     }
   };
 
@@ -109,10 +115,10 @@ export const ShapeTrainer = () => {
       <div className={styles.choicesContainer}>
         {question.options?.map((option, index) => (
           <button
-            disabled={choiceButton}
+            disabled={choiceButton || incorrectAnswers.includes(index)}
             key={index}
-            className={styles.answer}
-            onClick={() => guessHandling(option)}
+            className={`${styles.answer} ${incorrectAnswers.includes(index) ? styles.incorrectAnswer : ''}`}
+            onClick={() => guessHandling(option, index)}
           >
             {option}
           </button>
