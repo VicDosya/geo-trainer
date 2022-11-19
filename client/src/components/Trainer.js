@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useRef } from "react";
+import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./Trainer.module.css";
@@ -9,6 +9,7 @@ export const Trainer = () => {
   const [statusMessage, setStatusMessage] = useState("");
   const [score, setScore] = useState(0);
   const [choiceButton, setChoiceButton] = useState(false);
+  const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 
   //Fire loadQuiz function when the page loads. The page rendered twice(I removed StrictMode from index.js).
   useEffect(() => {
@@ -26,17 +27,22 @@ export const Trainer = () => {
   };
 
   //Handle User's guess choice
-  const guessHandling = async (userGuess) => {
+  const guessHandling = async (userGuess, index) => {
     setChoiceButton(true);
     const res = await axios.post("/api/flags/guess", { userGuess });
     if (!res.data.correctStatus) {
       setStatusMessage(res.data.returnStatus);
       setChoiceButton(false);
+      setIncorrectAnswers([
+        ...incorrectAnswers,
+        index
+      ]);
     } else {
       setStatusMessage(res.data.returnStatus);
       setScore(score + 1);
       loadQuiz();
       setChoiceButton(true);
+      setIncorrectAnswers([]);
     }
   };
 
@@ -71,10 +77,10 @@ export const Trainer = () => {
       <div className={styles.choicesContainer}>
         {question.options?.map((option, index) => (
           <button
-            disabled={choiceButton}
+            disabled={choiceButton || incorrectAnswers.includes(index)}
             key={index}
-            className={styles.answer}
-            onClick={() => guessHandling(option)}
+            className={`${styles.answer} ${incorrectAnswers.includes(index) ? styles.incorrectAnswer : ''}`}
+            onClick={() => guessHandling(option, index)}
           >
             {option}
           </button>

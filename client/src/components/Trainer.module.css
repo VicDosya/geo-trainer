@@ -36,6 +36,7 @@
 .statusMessageContainer {
   display: flex;
   justify-content: center;
+  height: 75px;
 }
 
 .questionContainer {
@@ -73,3 +74,7 @@
   height: 200px;
   width: 100%;
 }
+
+.incorrectAnswer {
+  background-color: red;
+};
