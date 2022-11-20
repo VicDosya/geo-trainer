@@ -76,7 +76,7 @@ export const ShapeTrainer = () => {
 
   //JSX
   return (
-    <div>
+    <div className={styles.menuContainer}>
       <div className={styles.topContainer}>
         <button onClick={goBackRoute} className={styles.backButton}>
           ⬅

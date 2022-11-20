@@ -84,6 +84,11 @@ html {
     background: linear-gradient(180deg, #1c80f9 0%, #006bee 100%);  
 }
 
+.countryFlags:active, .countryCapitals:active, .countryShapes:active {
+    cursor: pointer;
+    background: linear-gradient(180deg, #006bee 10%, #1c80f9 100%); 
+}
+
 .flagIcon, .capitalIcon, .countryIcon {
     font-size: 100px;
     color: #fff;

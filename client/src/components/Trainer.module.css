@@ -1,3 +1,27 @@
+:root{
+  --descriptionFont: 'Open Sans', sans-serif;
+  --titleFont: 'Archivo', sans-serif;
+}
+
+.trainerFooter {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 51px;
+  margin-top: 25px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #ebecf0;
+  line-height: 51px;
+  font-family: var(--titleFont);
+  color: #202124;
+}
+.capitalName {
+  font-family: var(--titleFont);
+  font-size: 50px;
+  color: #0554a2;
+}
+
 .menuContainer {
   margin-top: 25px;
     background-color: white;
@@ -7,26 +31,31 @@
     border: 1px solid #DFE1E6;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
-.trainerTitle {
-  display: flex;
-  justify-content: center;
-  font-family: "Arvo", serif;
-  font-weight: bold;
-  font-size: 40px;
+.menuCapitalContainer {
+  margin-top: 25px;
+  background-color: white;
+  width: 600px;
+  height: 715px;
+  border-radius: 15px;
+  border: 1px solid #DFE1E6;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
-.topContainer {
-  display: flex;
-  justify-content: space-between;
+.trainerTitle {
+  font-family: var(--titleFont);
+  font-weight: 500;
+  font-size: 40px;
+  display:flex;
+  justify-content: center;
+  margin-top: -40px;
+  color: #202124;
 }
 
 .backButton {
-  font-size: 50px;
-  font-weight: bold;
+  font-size: 60px;
   background-color: transparent;
   border: none;
   color: #0066cc;
+  padding-left: 5px;
 }
 
 .backButton:hover {
@@ -37,6 +66,7 @@
 .imgContainer {
   display: flex;
   justify-content: center;
+  height: 200px;
 }
 
 .flagImg {
@@ -46,7 +76,9 @@
 .statusMessageContainer {
   display: flex;
   justify-content: center;
-  height: 75px;
+  height: 70px;
+  font-family: var(--titleFont);
+  color: #202124;
 }
 
 .questionContainer {
@@ -56,6 +88,8 @@
 
 .questionTitle {
   font-weight: normal;
+  font-family: var(--titleFont);
+  color: #202124;
 }
 
 .choicesContainer {
@@ -71,7 +105,21 @@
   margin-top: 10px;
   font-size: 20px;
   font-weight: normal;
-  font-family: "Arvo", serif;
+  font-family: var(--titleFont);
+  background: #0072ff;
+  color: #fff;
+  border-radius: 15px;
+  border: 1px solid #DFE1E6;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.answer:hover {
+  cursor: pointer;
+}
+
+.answer:active {
+  cursor: pointer;
+  background: linear-gradient(180deg, #1c80f9 0%, #0263da 100%); 
 }
 
 .myGroup {
@@ -86,5 +134,6 @@
 }
 
 .incorrectAnswer {
-  background-color: red;
+  background-color: rgb(239, 54, 54);
 };
+
