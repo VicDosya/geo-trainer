@@ -2,6 +2,7 @@ import { React, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./Trainer.module.css";
+import { IoArrowBackCircle } from 'react-icons/io5'
 
 export const ShapeTrainer = () => {
   //useState variables
@@ -76,12 +77,12 @@ export const ShapeTrainer = () => {
 
   //JSX
   return (
-    <div className={styles.menuContainer}>
+    <div className={styles.menuShapesContainer}>
       <div className={styles.topContainer}>
         <button onClick={goBackRoute} className={styles.backButton}>
-          ⬅
+        <IoArrowBackCircle />
         </button>
-        <h1 className={styles.trainerTitle}>Shapes Trainer Page</h1>
+        <h1 className={styles.trainerTitle}>Shapes Trainer</h1>
       </div>
       <div className={styles.questionContainer}>
         {/* SVG Shape code */}
@@ -109,7 +110,7 @@ export const ShapeTrainer = () => {
       </div>
       <div className={styles.questionContainer}>
         <h1 className={styles.questionTitle}>
-          {question.question} Score: {score}
+          {question.question}
         </h1>
       </div>
       <div className={styles.choicesContainer}>
@@ -125,6 +126,7 @@ export const ShapeTrainer = () => {
         ))}
         {/* Optional Chaining (the question mark) used here, because JS thought the question.options array was undefined. */}
       </div>
+      <div className={styles.trainerFooter}> Score: {score}</div>
     </div>
   );
 };

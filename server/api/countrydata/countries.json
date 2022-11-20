@@ -8121,7 +8121,7 @@
         "independent": true
     },
     {
-        "name": "Heard Island and McDonald Islands",
+        "name": "Has no capital",
         "topLevelDomain": [
             ".hm",
             ".aq"
@@ -8131,6 +8131,7 @@
         "callingCodes": [
             "672"
         ],
+        "capital": "",
         "altSpellings": [
             "HM"
         ],

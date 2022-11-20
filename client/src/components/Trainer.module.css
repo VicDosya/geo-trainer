@@ -40,6 +40,15 @@
   border: 1px solid #DFE1E6;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.menuShapesContainer{
+  margin-top: 25px;
+  background-color: white;
+  width: 600px;
+  height: 795px;
+  border-radius: 15px;
+  border: 1px solid #DFE1E6;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 .trainerTitle {
   font-family: var(--titleFont);
   font-weight: 500;

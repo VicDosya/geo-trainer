@@ -58,7 +58,7 @@ export const CapitalTrainer = () => {
         <button onClick={goBackRoute} className={styles.backButton}>
         <IoArrowBackCircle />
         </button>
-        <h1 className={styles.trainerTitle}>Capital Trainer Page</h1>
+        <h1 className={styles.trainerTitle}>Capital Trainer</h1>
       </div>
       <div className={styles.questionContainer}>
         <h1 className={styles.capitalName}>{question.countryName}</h1>
