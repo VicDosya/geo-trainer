@@ -100,7 +100,7 @@ export const ShapeTrainer = () => {
               ref={pathDimRef}
               className={styles.myPath}
               d={question.pathShape}
-              fill="red"
+              fill="#0066cc"
             ></path>
           </g>
         </svg>
