@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./Trainer.module.css";
+import {IoArrowBackCircle} from 'react-icons/io5';
 
 export const CapitalTrainer = () => {
   //useState variables
@@ -50,24 +51,26 @@ export const CapitalTrainer = () => {
   let navigate = useNavigate();
   const goBackRoute = () => navigate(-1);
 
+  const statusMessageStyle = statusMessage === "Correct!" ? styles.CSM : styles.wrongStatusMessage;
+
   //JSX
   return (
-    <div>
+    <div className={styles.menuCapitalContainer}>
       <div className={styles.topContainer}>
         <button onClick={goBackRoute} className={styles.backButton}>
-          ⬅
+        <IoArrowBackCircle />
         </button>
-        <h1 className={styles.trainerTitle}>Capital Trainer Page</h1>
+        <h1 className={styles.trainerTitle}>Capital Trainer</h1>
       </div>
       <div className={styles.questionContainer}>
-        <h1>{question.countryName}</h1>
+        <h1 className={styles.capitalName}>{question.countryName}</h1>
       </div>
       <div className={styles.statusMessageContainer}>
-        <h1 className={styles.statusMessage}>{statusMessage}</h1>
+        <h1 className={statusMessageStyle}>{statusMessage}</h1>
       </div>
       <div className={styles.questionContainer}>
         <h1 className={styles.questionTitle}>
-          {question.question} Score: {score}
+          {question.question}
         </h1>
       </div>
       <div className={styles.choicesContainer}>
@@ -83,6 +86,7 @@ export const CapitalTrainer = () => {
         ))}
         {/* Optional Chaining (the question mark) used here, because JS thought the question.options array was undefined. */}
       </div>
+      <div className={styles.trainerFooter}>Score: {score}</div>
     </div>
   );
 };

@@ -642,7 +642,6 @@
         "callingCodes": [
             "672"
         ],
-        "capital": "There is no capital",
         "subregion": "Antarctica",
         "region": "Polar",
         "population": 1000,
@@ -8121,7 +8120,7 @@
         "independent": true
     },
     {
-        "name": "Heard Island and McDonald Islands",
+        "name": "Has no capital",
         "topLevelDomain": [
             ".hm",
             ".aq"
@@ -8131,6 +8130,7 @@
         "callingCodes": [
             "672"
         ],
+        "capital": "",
         "altSpellings": [
             "HM"
         ],
