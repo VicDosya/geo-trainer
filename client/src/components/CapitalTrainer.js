@@ -51,6 +51,8 @@ export const CapitalTrainer = () => {
   let navigate = useNavigate();
   const goBackRoute = () => navigate(-1);
 
+  const statusMessageStyle = statusMessage === "Correct!" ? styles.CSM : styles.wrongStatusMessage;
+
   //JSX
   return (
     <div className={styles.menuCapitalContainer}>
@@ -64,7 +66,7 @@ export const CapitalTrainer = () => {
         <h1 className={styles.capitalName}>{question.countryName}</h1>
       </div>
       <div className={styles.statusMessageContainer}>
-        <h1 className={styles.statusMessage}>{statusMessage}</h1>
+        <h1 className={statusMessageStyle}>{statusMessage}</h1>
       </div>
       <div className={styles.questionContainer}>
         <h1 className={styles.questionTitle}>

@@ -23,7 +23,7 @@ export const Trainer = () => {
     setQuestion(res.data);
     setTimeout(() => {
       setStatusMessage("");
-    }, 2000);
+    }, 5000);
     setChoiceButton(false);
   };
 
@@ -51,6 +51,7 @@ export const Trainer = () => {
   let navigate = useNavigate();
   const goBackRoute = () => navigate('/');
 
+  const statusMessageStyle = statusMessage === "Correct!" ? styles.CSM : styles.wrongStatusMessage;
   //JSX
   return (
     <div className={styles.menuContainer}>
@@ -69,7 +70,7 @@ export const Trainer = () => {
         ></img>
       </div>
       <div className={styles.statusMessageContainer}>
-        <h1 className={styles.statusMessage}>{statusMessage}</h1>
+        <h1 className={statusMessageStyle}>{statusMessage}</h1>
       </div>
       <div className={styles.questionContainer}>
         <h1 className={styles.questionTitle}>

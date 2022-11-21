@@ -35,7 +35,6 @@
   margin-top: 25px;
   background-color: white;
   width: 600px;
-  height: 715px;
   border-radius: 15px;
   border: 1px solid #DFE1E6;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -87,12 +86,13 @@
   justify-content: center;
   height: 70px;
   font-family: var(--titleFont);
-  color: #202124;
 }
 
 .questionContainer {
   display: flex;
   justify-content: center;
+  padding: 0 50px;
+  text-align: center;
 }
 
 .questionTitle {
@@ -144,5 +144,12 @@
 
 .incorrectAnswer {
   background-color: rgb(239, 54, 54);
-};
+}
 
+.CSM {
+  color: rgb(50, 200, 83);
+}
+
+.wrongStatusMessage {
+  color: rgb(239, 54, 54);
+}

@@ -3,6 +3,8 @@ import countryData from "./countrydata/countries.json";
 import { selectRandomOptions } from "./utils/Utils";
 const app = express();
 
+const NO_CAPITAL = "There is no capital.";
+
 //Functions
 const generateQuiz = () => {
   const correctCapitalNumber = Math.floor(Math.random() * countryData.length);
@@ -10,8 +12,8 @@ const generateQuiz = () => {
     id: 1,
     question: "What is the capital of this country?",
     countryName: countryData[correctCapitalNumber].name,
-    options: selectRandomOptions(countryData, correctCapitalNumber, "capital"),
-    answer: countryData[correctCapitalNumber].capital,
+    options: selectRandomOptions(countryData, correctCapitalNumber, "capital", NO_CAPITAL),
+    answer: countryData[correctCapitalNumber].capital || NO_CAPITAL,
   };
 };
 
