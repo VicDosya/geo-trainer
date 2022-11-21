@@ -11,6 +11,5 @@ Practice country flags, capitals and shapes using this geo-trainer!
 
 # Screenshots
 ![image](https://user-images.githubusercontent.com/96661032/203131047-6d1b296d-c4c8-44a4-aa34-9758c24e80ff.png)
-![image](https://user-images.githubusercontent.com/96661032/203131195-d95bb8ba-fd0c-4a55-8f52-dbca4eeb19ef.png)
-![image](https://user-images.githubusercontent.com/96661032/203131259-a79a2ff2-a6ae-4a5d-9697-4ae8c308c89b.png)
-![image](https://user-images.githubusercontent.com/96661032/203131547-76ec6ee1-5acb-4f28-8560-e919c3219d7e.png)
+![203131047-6d1b296d-c4c8-44a4-aa34-9712312358c24e80ff](https://user-images.githubusercontent.com/96661032/203132887-005c7be4-e72b-481f-a0a5-f64d1737e6f4.png)
+
